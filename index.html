@@ -5,15 +5,25 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
       <script>
-        $(function(){
-            $("#button2").click(function(){
-		
-                $.post("http://hangouts.cisco.com/events",JSON.stringify($("#form1").serialize()),function(data){
+      
+
+            function clickButton(){
+              console.log(">>>>>>>>>>>"+form1.ename);
+		var formData = new FormData(form1),
+        result = {};
+        console.log(">>>>>>>>>>>"+form1.ename);
+      for (var entry of formData.entries())
+     {
+        console.log(entry);
+          result[entry[0]] = entry[1];
+      }
+      result = JSON.stringify(result)
+      console.log(result);
+                $.post("http://hangouts.cisco.com/events",result,function(data){
 
                 });
-            });
+            }
 
-        });
       </script>
     </head>
     <body>
@@ -32,7 +42,7 @@
 	<p><label for="event_location">Event Location</label>
            <input type="text" name="event_location" id="elocation"></p>
       <div id="mydiv"></div>
-      <input type="button" id ="button2" value="Create Event" />
+      <input type="button" id ="button2" value="Create Event" onClick="clickButton()"/>
     </form>
 
     </body>
