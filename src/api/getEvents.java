@@ -32,7 +32,7 @@ public class getEvents extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 *return a json
 	 */
-    //http://localhost:8080/Hangouts/events?username=ashlhu
+    //http://localhost:8080/ashley_hangouts/events?username=ashlhu
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JSONArray array = new JSONArray();
 	   	 try {

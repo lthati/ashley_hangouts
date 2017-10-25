@@ -42,7 +42,7 @@ public class Event {
 		return ret;
 	}
 	
-	private String eventId;
+	private int eventId;
 	private String description;
 	private String organizerName;
 	private String organizerEmail;
@@ -50,12 +50,19 @@ public class Event {
 	private String eventDate;
 	private String startTime;
 	private String endTime;
-	private int guestsCount;
+	private int guestCount;
+	
+	
+	
+	public Event() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Event(JSONObject object) {
 		try {
 			if (object != null) {
-				this.eventId = object.getString("EventsId");
+				this.eventId = object.getInt("EventsId");
 				this.description = object.getString("Description");
 				this.organizerName = object.getString("OrganizerName");
 				this.organizerEmail = object.getString("OrganizerEmail");
@@ -63,17 +70,17 @@ public class Event {
 				this.eventDate = object.getString("EventDate");
 				this.startTime = object.getString("StartTime");
 				this.endTime = object.getString("EndTime");
-				this.guestsCount = object.getInt("guestsCount");
+				this.guestCount = object.getInt("guestCount");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Event(String eventId, String description, 
+	public Event(int eventId, String description, 
 				String organizerName, String organizerEmail, 
 				String location ,String eventDate, 
-				String startTime, String endTime, int guestsCount) {
+				String startTime, String endTime, int guestCount) {
 		this.eventId = eventId;
 		this.description = description;
 		this.organizerName = organizerName;
@@ -82,7 +89,7 @@ public class Event {
 		this.eventDate = eventDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.guestsCount = guestsCount;
+		this.guestCount = guestCount;
 	}
 	
 	public JSONObject toJSONObject() {
@@ -96,18 +103,18 @@ public class Event {
 			obj.put("eventDate", eventDate);
 			obj.put("startTime", startTime);
 			obj.put("endTime", endTime);
-			obj.put("guestsCount", guestsCount);
+			obj.put("guestCount", guestCount);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return obj;
 	}
 
-	public String getEventId() {
+	public int getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(String eventId) {
+	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
 
@@ -167,12 +174,13 @@ public class Event {
 		this.endTime = endTime;
 	}
 
-	public int getGuestsCount() {
-		return guestsCount;
+	public int getGuestCount() {
+		return guestCount;
 	}
 
-	public void setGuestsCount(int guestsCount) {
-		this.guestsCount = guestsCount;
+	
+	public void setGuestCount(int guestCount) {
+		this.guestCount = guestCount;
 	}
 
 	
