@@ -42,7 +42,7 @@ public class Event {
 		return ret;
 	}
 	
-	private int eventId;
+	private Integer eventId;
 	private String description;
 	private String organizerName;
 	private String organizerEmail;
@@ -62,14 +62,13 @@ public class Event {
 	public Event(JSONObject object) {
 		try {
 			if (object != null) {
-				this.eventId = object.getInt("EventsId");
-				this.description = object.getString("Description");
-				this.organizerName = object.getString("OrganizerName");
-				this.organizerEmail = object.getString("OrganizerEmail");
-				this.location = object.getString("Location");
-				this.eventDate = object.getString("EventDate");
-				this.startTime = object.getString("StartTime");
-				this.endTime = object.getString("EndTime");
+				this.description = object.getString("description");
+				this.organizerName = object.getString("organizerName");
+				this.organizerEmail = object.getString("organizerEmail");
+				this.location = object.getString("location");
+				this.eventDate = object.getString("eventDate");
+				this.startTime = object.getString("startTime");
+				this.endTime = object.getString("endTime");
 				this.guestCount = object.getInt("guestCount");
 			}
 		} catch (Exception e) {
@@ -81,7 +80,6 @@ public class Event {
 				String organizerName, String organizerEmail, 
 				String location ,String eventDate, 
 				String startTime, String endTime, int guestCount) {
-		this.eventId = eventId;
 		this.description = description;
 		this.organizerName = organizerName;
 		this.organizerEmail = organizerEmail;
@@ -95,7 +93,9 @@ public class Event {
 	public JSONObject toJSONObject() {
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("eventId", eventId);
+			if (eventId != null) {
+				obj.put("eventId", eventId);
+			}
 			obj.put("description", description);
 			obj.put("organizerName", organizerName);
 			obj.put("organizerEmail", organizerEmail);
@@ -110,11 +110,11 @@ public class Event {
 		return obj;
 	}
 
-	public int getEventId() {
+	public Integer getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(int eventId) {
+	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
 	}
 

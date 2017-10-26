@@ -27,10 +27,10 @@ public class BusinessFunctions {
         setDbConnection(new DatabaseConnection());
     }
 
-    public void addEmail(String email) {
-        if (email != null && !email.isEmpty()) {
+    public void addEmailAddress(String email) {
+       if (email != null && !email.isEmpty()) {
             getDbConnection().addEmail(email);
-        }
+       }
     }
 
     public List<String> getEmails() {
@@ -117,7 +117,7 @@ public class BusinessFunctions {
 
             Transport transport = session.getTransport("smtp");
             transport.connect(host, username, password);
-            transport.send(message);
+            Transport.send(message);
             transport.close();
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
@@ -145,7 +145,7 @@ public class BusinessFunctions {
 
     public static void main(String[] args){
             BusinessFunctions bf = new BusinessFunctions();
-            bf.updateGuestCount(2, "lthati@cisco.com",  "Leela Thati");
+            bf.updateGuestCount(3, "ashlhu@cisco.com", "ashlhu");
     }
 
 }

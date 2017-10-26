@@ -19,7 +19,7 @@
       }
       result = JSON.stringify(result)
       console.log(result);
-                $.post("http://hangouts.cisco.com/events",result,function(data){
+                $.post("http://localhost:8082/Hangouts/record",result,function(data){
 
                 });
             }
@@ -29,18 +29,23 @@
     <body>
 <font color="green">Have a new event Idea??? Just post here to collabarate with your colleagues!!!</font>
     <form id="form1">
-      <p><label for="event_name">Event Name:</label>
-           <input type="text" name="event_name" id="ename"></p>
-       <p><label for="event_details">Event Details:</label>
-           <input type="text" name="event_details" id="edetails"></p>
-	<p><label for="event_date">Event Date:</label>
-           <input type="date" name="event_date" id="edate"></p>
-	<p><label for="start_time">Start Time:</label>
-           <input type="time" name="start_time" id="stime"></p>
-        <p><label for="end_time">End Time:</label>
-           <input type="time" name="end_time" id="etime"></p>
-	<p><label for="event_location">Event Location</label>
-           <input type="text" name="event_location" id="elocation"></p>
+      <p><label for="description">Event Name:</label>
+           <input type="text" name="description" id="ename"></p>
+       <p><label for="organizerName">Organizer Name:</label>
+           <input type="text" name="organizerName" id="eoname"></p>
+       <p><label for="organizerEmail">Organizer Email</label>
+           <input type="text" name="organizerEmail" id="eoemail"></p>
+       <p><label for="location">Event Location</label>
+           <input type="text" name="location" id="elocation"></p>
+		<p><label for="eventDate">Event Date:</label>
+	           <input type="date" name="eventDate" id="edate"></p>
+		<p><label for="startTime">Start Time:</label>
+	           <input type="text" name="startTime" id="stime"></p>
+        <p><label for="endTime">End Time:</label>
+           <input type="text" name="endTime" id="etime"></p>
+        <p><label for="guestCount">Guest Count:</label>
+           <input type="number" name="guestCount" id="eguestCount"></p>
+           	
       <div id="mydiv"></div>
       <input type="button" id ="button2" value="Create Event" onClick="clickButton()"/>
     </form>

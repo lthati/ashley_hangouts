@@ -14,6 +14,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import model.Event;
+import db.BusinessFunctions;
+
 /**
  * Servlet implementation class EventRecord
  */
@@ -46,18 +49,14 @@ public class EventRecord extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 try {
 	   		 JSONObject input = RpcParser.parseInput(request);
-	   		 if (input.has("username") && input.has("event_to_add")) {
-	   			 String userName = (String) input.get("username");
-	   			 JSONArray array = (JSONArray) input.get("event_to_add");
-	   			 List<String> EventsList = new ArrayList<>();
-	   			 for (int i = 0; i < array.length(); i++) {
-	   				 String businessId = (String) array.get(i);
-	   				EventsList.add(businessId);
-	   			 }
-	   			 RpcParser.writeOutput(response, new JSONObject().put("status", "OK"));
-	   		 } else {
-	   			 RpcParser.writeOutput(response, new JSONObject().put("status", "InvalidParameter"));
-	   		 }
+	   		 Event event = new Event(input);
+	   		 
+	   		 BusinessFunctions bf = new BusinessFunctions();
+	   		 bf.addEvent(event.getDescription(), event.getOrganizerName(), 
+	   				 					event.getOrganizerEmail(), event.getLocation(), 
+	   				 					event.getEventDate(), event.getStartTime(), 
+	   				 					event.getEndTime(), event.getGuestCount());
+	   		RpcParser.writeOutput(response, new JSONObject().put("status", "OK"));
 	   	 } catch (JSONException e) {
 	   		 e.printStackTrace();
 	   	 }

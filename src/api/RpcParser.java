@@ -32,8 +32,8 @@ public class RpcParser {
     public static void writeOutput(HttpServletResponse response, JSONObject obj) {
    	 try {   		 
    		 //server is returning a response in a format of JSON
-   		 //response.setContentType("application/json");
-   		 response.setContentType("text/html");
+   		 response.setContentType("application/json");
+   		 //response.setContentType("text/html");
    		 //Allow all viewers to view this response. 
    		 response.addHeader("Access-Control-Allow-Origin", "*");
    		 //Create a PrintWriter from response such that we can add data to response. 
